@@ -1,12 +1,6 @@
-# <font style="color:#4F46E5" type="Roboto"> Saaf</font> <font type="Roboto"> water </font>
+# <font style="color:#4F46E5" > Saaf</font> water 
 
 [![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://developer.ibm.com/callforcode/get-started/) [![Website](https://img.shields.io/badge/View-Website-blue)](https://sample-project.s3-web.us-east.cloud-object-storage.appdomain.cloud/)
-
-A basic GitHub repository example for new [Call for Code](https://developer.ibm.com/callforcode/) projects and those that join the Call for Code with The Linux Foundation deployment initiative. Not all sections or files are required. You can make this as simple or as in-depth as you need. And don't forget to [register for Call for Code 2021](https://developer.ibm.com/callforcode/get-started/)!
-
-> If you're new to open source, please consider taking the [free "Introduction to Open Source" class](https://cognitiveclass.ai/courses/introduction-to-open-source).
-
-_Read this in other languages: [English](README.md), [한국어](./docs/README.ko.md), [português](./docs/README.pt_br.md)._
 
 ## Contents
 
@@ -24,8 +18,7 @@ _Read this in other languages: [English](README.md), [한국어](./docs/README.k
   - [Live demo](#live-demo)
   - [Built with](#built-with)
   - [Contributing](#contributing)
-  - [Versioning](#versioning)
-  - [Authors](#authors)
+  - [Team](#team)
   - [License](#license)
   - [Acknowledgments](#acknowledgments)
 
@@ -44,23 +37,23 @@ With IoT devices, frequent water quality monitoring becomes automated and thanks
 
 ### The idea
 
-<font style="color:#4F46E5" type="Roboto"> Saaf</font> <font type="Roboto"> water </font> is an end to end Open-source platform which when installed will:
+<b><font style="color:#4F46E5" type="Roboto"> Saaf</font></b> <font type="Roboto"> water </font> is an end to end Open-source platform which when installed will:
 1. Timely monitors groundwater and informs authorities as well as the community about water quality along with purification methods for consumption.
 2. Predict when the water quality will go bad.
 3. Reduce dependency on manual test kits or lab tests for approximate assessment.
 
 ## Demo video
 
-[![Watch the video](https://github.com/Call-for-Code/Liquid-Prep/blob/master/images/readme/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video](./images/saaf-youtube.png)](https://youtu.be/_taOL857nPA)
 
 ## The architecture
 
-![Video transcription/translation app](https://developer.ibm.com/developer/tutorials/cfc-starter-kit-speech-to-text-app-example/images/cfc-covid19-remote-education-diagram-2.png)
+![Saaf water Dashboard](./images/architecture.png)
 
-1. The user navigates to the site and uploads a video file.
-2. Watson Speech to Text processes the audio and extracts the text.
-3. Watson Translation (optionally) can translate the text to the desired language.
-4. The app stores the translated text as a document within Object Storage.
+1. The Saaf water hardware consists of a low power, cellular enabled setup that monitors water parameters like TDS, Turbidity, pH and more and sends it to IBM watson IoT platform.
+2. The water parameter data is then collected by the NodeRed backed from the IBM Watson IoT platform and then stored in NoSQL database.
+3. The Backend then sends the data via websocket to the Saaf water dashboard deployed on IBM Cloud Foundry.
+4. Or users can get the groundwater quality information and purification methods via SMS too.
 
 ## Long description
 
@@ -68,17 +61,16 @@ With IoT devices, frequent water quality monitoring becomes automated and thanks
 
 ## Project roadmap
 
-The project currently does the following things.
+The Saaf water currently does the following things.
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Monitors various groundwater parameters like TDS, pH, Turbidity, Electrical Conductivity. 
+- Groundwater Quality Prediction.
+- Informs authorities as well as community about water quality with purification methods.
 
-It's in a free tier IBM Cloud Kubernetes cluster. In the future we plan to run on Red Hat OpenShift, for example.
+![Roadmap](./images/tech_roadmap.png)
+![Roadmap](./images/product_roadmap.png)
 
-See below for our proposed schedule on next steps after Call for Code 2021 submission.
-
-![Roadmap](./images/roadmap.jpg)
+Note - Some things may take longer time because of COVID-19 restrictions in India.
 
 ## Getting started
 
@@ -90,32 +82,30 @@ In this section you add the instructions to run your project on your local machi
 
 ## Live demo
 
-You can find a running system to test at [callforcode.mybluemix.net](http://callforcode.mybluemix.net/).
+You can find a running system to test at [callforcode.mybluemix.net](https://saaf-water.eu-gb.mybluemix.net/).
 
 ## Built with
 
-- [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
-- [IBM Cloud Functions](https://cloud.ibm.com/catalog?search=cloud%20functions#search_results) - The compute platform for handing logic
-- [IBM API Connect](https://cloud.ibm.com/catalog?search=api%20connect#search_results) - The web framework used
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+- [IBM Node Red](https://nodered.org/docs/getting-started/ibmcloud#deploy-to-ibm-cloud) - Backend for saaf-Water
+- [IBM Watson IOT Platform](https://www.ibm.com/cloud/watson-iot-platform) - The service which we use to manage hardware connections to IBM Cloud.
+- [IBM Cloudant](https://www.ibm.com/cloud/cloudant) - The NoSQL database used
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) - The service which we used to deploy [Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
+- [Esri Arcgis Map](https://www.esri.com/en-us/arcgis/about-arcgis/overview) - Map we're using in [Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
+- [ReactJs](https://reactjs.org/) - The web framework used
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+## Team
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+![Authors](./images/team.png)
+- [Hrishikesh Bhandari](https://github.com/Hrishikesh24)
+- [Jay Aherkar](https://github.com/jehhhh)
+- [Satyam Prakash](https://github.com/satyamprakash-iot)
+- [Manikanta Chavvakula](https://github.comManikantaChavvakula7)
+- [Sanket Marathe](https://github.com/msanket9)
 
-## Authors
-
-<a href="https://github.com/Call-for-Code/Project-Sample/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=Call-for-Code/Project-Sample" />
-</a>
-
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
 
 ## License
 
