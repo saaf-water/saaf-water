@@ -1,4 +1,4 @@
-# Submission or project name
+# <font style="color:#4F46E5" type="Roboto"> Saaf</font> <font type="Roboto"> water </font>
 
 [![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://developer.ibm.com/callforcode/get-started/) [![Website](https://img.shields.io/badge/View-Website-blue)](https://sample-project.s3-web.us-east.cloud-object-storage.appdomain.cloud/)
 
@@ -33,15 +33,21 @@ _Read this in other languages: [English](README.md), [한국어](./docs/README.k
 
 ### What's the problem?
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, schools in most affected areas are taking precautionary measures by closing their facilities. With school-aged children at home for an indeterminate amount of time, keeping them engaged, entertained, and on top of their education is important.
+Are you aware that almost 50% of the world’s population, including that of developed countries, is dependent on groundwater for drinking? 
+
+Physical, Chemical, and Biological Contamination of groundwater have led to <em> 1 in 3 people globally not having access to safe drinking water, this is as per UNICEF and WHO report of 2019 </em>. Consumption of contaminated water leads to numerous health complications from dysentery to severe kidney damage.
+The biggest problem is the lack of frequent monitoring and its communication about the Degradation of a Water source not just to the authorities but to the community too.  
 
 ### How can technology help?
 
-Schools and teachers can continue to engage with their students through virtual classrooms, and even create interactive spaces for classes. As parents face a new situation where they may need to homeschool their children, finding appropriate online resources is important as well.
+With IoT devices, frequent water quality monitoring becomes automated and thanks to open-source web technologies, this information can be made accessible to every individual who is using a water source. Integration of IBM Cloud and Watson services enables us to not just inform about the degraded groundwater source but also informs the community about the purification methods whenever required. Understanding patterns from collected Data can be employed to reduce lab test dependency for approximate assessment. 
 
 ### The idea
 
-It's imperative that learning and creating can continue when educational institutions have to shift the way they teach in times of crises, such as the COVID-19 pandemic. Providing a set of open source tools, backed by IBM Cloud and Watson Services, will enable educators to more easily make content available for their students.
+<font style="color:#4F46E5" type="Roboto"> Saaf</font> <font type="Roboto"> water </font> is an end to end Open-source platform which when installed will:
+1. Timely monitors groundwater and informs authorities as well as the community about water quality along with purification methods for consumption.
+2. Predict when the water quality will go bad.
+3. Reduce dependency on manual test kits or lab tests for approximate assessment.
 
 ## Demo video
 
