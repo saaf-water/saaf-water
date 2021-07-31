@@ -1,0 +1,781 @@
+[
+    {
+        "id": "d8d99b35.bf2c68",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "224abcef.65c214",
+        "type": "ibmiot in",
+        "z": "d8d99b35.bf2c68",
+        "authentication": "boundService",
+        "apiKey": "",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "Enter your Device ID",
+        "applicationId": "",
+        "deviceType": "Enter your Device Type",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "pumpNode",
+        "service": "registered",
+        "allDevices": true,
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": "2",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "6fff6367.fe4b0c",
+                "3e0a0af8.33a506"
+            ]
+        ]
+    },
+    {
+        "id": "72db8b85.ea2224",
+        "type": "cloudant out",
+        "z": "d8d99b35.bf2c68",
+        "name": "Database",
+        "cloudant": "",
+        "database": "pdata",
+        "service": "Enter your Cloudant DB details",
+        "payonly": true,
+        "operation": "insert",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6fff6367.fe4b0c",
+        "type": "change",
+        "z": "d8d99b35.bf2c68",
+        "name": "debug-IoT payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "payload.tds",
+                "pt": "msg",
+                "to": "payload.d.tds",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.turb",
+                "pt": "msg",
+                "to": "payload.d.turbidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.ph",
+                "pt": "msg",
+                "to": "payload.d.ph",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.ec",
+                "pt": "msg",
+                "to": "payload.d.ec",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.temp",
+                "pt": "msg",
+                "to": "payload.d.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "9411f022.fea3"
+            ]
+        ]
+    },
+    {
+        "id": "9411f022.fea3",
+        "type": "debug",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "43da77c6.05d0c8",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "inFilterHardware",
+        "func": "msg.payload = {\n    date: new Date(),\n    time: new Date().getTime(),\n    tds: msg.payload.d.tds,\n    turbidity: msg.payload.d.turb,\n    ph: msg.payload.d.ph,\n    ec: msg.payload.d.ec,\n    temperature: msg.payload.d.temp,\n    summary: 4\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb8d5087.499d9",
+        "type": "cloudant in",
+        "z": "d8d99b35.bf2c68",
+        "name": "Database",
+        "cloudant": "4e09106f.2e2d9",
+        "database": "pdata",
+        "service": "Enter your Cloudant DB details",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "389ff846.6b7dc8"
+            ]
+        ]
+    },
+    {
+        "id": "c6fa71b8.6fbfe",
+        "type": "inject",
+        "z": "d8d99b35.bf2c68",
+        "d": true,
+        "name": "autoSend",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "5",
+        "topic": "",
+        "x": 170,
+        "y": 420,
+        "wires": [
+            [
+                "eb8d5087.499d9"
+            ]
+        ]
+    },
+    {
+        "id": "67721c94.a2e424",
+        "type": "debug",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "46514b18.12c154",
+        "type": "websocket out",
+        "z": "d8d99b35.bf2c68",
+        "name": "/ws/publishMessage",
+        "server": "a37a35a9.6aa598",
+        "client": "",
+        "x": 1060,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9b216701.3ce828",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "outFilter ",
+        "func": "// cloudant.rows[41].doc.temperature\nmsg.payload = {timestamp: msg.payload.histMax[0].timestamp,\n        date: msg.payload.histMax[0].date,\n        time: msg.payload.histMax[0].time,\n        tds: msg.payload.histMax[0].tds,\n        turbidity: msg.payload.histMax[0].turbidity,\n        ph: msg.payload.histMax[0].ph,\n        ec: msg.payload.histMax[0].ec,\n        temperature: msg.payload.histMax[0].temperature,\n        summary: msg.payload.histMax[0].summary\n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 480,
+        "wires": [
+            [
+                "67721c94.a2e424",
+                "46514b18.12c154"
+            ]
+        ]
+    },
+    {
+        "id": "cb631a17.e2daf8",
+        "type": "websocket in",
+        "z": "d8d99b35.bf2c68",
+        "name": "requestRT",
+        "server": "a37a35a9.6aa598",
+        "client": "",
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "eb8d5087.499d9"
+            ]
+        ]
+    },
+    {
+        "id": "a162a6d5.64a408",
+        "type": "websocket in",
+        "z": "d8d99b35.bf2c68",
+        "name": "requestHistory",
+        "server": "f50a57d2.6fe718",
+        "client": "",
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "49202441.f586ec"
+            ]
+        ]
+    },
+    {
+        "id": "371fa248.a4932e",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "outFilter[ ]",
+        "func": "// cloudant.rows[41].doc.temperature\ntotal = msg.payload.total-1;\nlimit = 7;\nhist = [];\nif(total > limit){\nfor(i = total-limit; i < msg.payload.total; i++ ){\n    hist.push({timestamp: msg.payload.histMax[i].timestamp,\n        date: msg.payload.histMax[i].date,\n        time: msg.payload.histMax[i].time,\n        tds: msg.payload.histMax[i].tds,\n        turbidity: msg.payload.histMax[i].turbidity,\n        ph: msg.payload.histMax[i].ph,\n        ec: msg.payload.histMax[i].ec,\n        temperature: msg.payload.histMax[i].temperature,\n        summary: msg.payload.histMax[i].summary\n        \n    });\n}\n}\nelse{\n    hist={remark: \"More data required!\"};\n}\n\nmsg.payload = {\n    hist\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 620,
+        "wires": [
+            [
+                "bf103ece.0a13c",
+                "abe66b32.67b948"
+            ]
+        ]
+    },
+    {
+        "id": "70e7cff4.73523",
+        "type": "inject",
+        "z": "d8d99b35.bf2c68",
+        "d": true,
+        "name": "autoSend",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "49202441.f586ec"
+            ]
+        ]
+    },
+    {
+        "id": "bf103ece.0a13c",
+        "type": "debug",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "abe66b32.67b948",
+        "type": "websocket out",
+        "z": "d8d99b35.bf2c68",
+        "name": "/ws/publishMessage/history",
+        "server": "f50a57d2.6fe718",
+        "client": "",
+        "x": 1080,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1f81af1c.dc98c1",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "inFilter",
+        "func": "msg.payload = {\n    date: new Date(),\n    time: new Date().getTime(),\n    tds: msg.payload.tds,\n    turbidity: msg.payload.turb,\n    ph: msg.payload.ph,\n    ec: msg.payload.ec,\n    temperature: msg.payload.temp,\n    summary: 1\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49202441.f586ec",
+        "type": "cloudant in",
+        "z": "d8d99b35.bf2c68",
+        "name": "Database",
+        "cloudant": "4e09106f.2e2d9",
+        "database": "pdata",
+        "service": "Enter your Cloudant DB details",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 380,
+        "y": 600,
+        "wires": [
+            [
+                "d9b24ea7.62038"
+            ]
+        ]
+    },
+    {
+        "id": "624ae4d7.f24c4c",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "inFilter-classifier",
+        "func": "currentTds = msg.payload.tds;\ncurrentTurbidity = msg.payload.turb;\ncurrentPh = msg.payload.ph;\ncurrentEc = msg.payload.ec;\ncurrentTemperature = msg.payload.temp;\n\nSummary = -1;\nparamSummary = [-1,-1,-1,-1];\n\n ///////   TDS    ////////////\nif(currentTds >= 0 && currentTds < 250){\n    paramSummary[0] = 1;\n}\n\nelse if(currentTds >= 250 && currentTds < 950){\n    paramSummary[0] = 2;\n}\nelse if(currentTds >= 950){\n    paramSummary[0] = 3; \n}\n\n ///////   Turbidity    ////////////\nif(currentTurbidity >= 0 && currentTurbidity <= 2){\n    paramSummary[1] = 1;\n}\n\nelse if(currentTurbidity > 2 && currentTurbidity <= 5){\n    paramSummary[1] = 2;\n}\nelse if(currentTurbidity > 5){\n    paramSummary[1] = 3; \n}\n\n ///////   pH    ////////////\nif(currentPh >= 6.5 && currentPh <= 8.5){\n    paramSummary[2] = 1;\n}\nelse if(currentPh < 6.5 || currentPh > 8.5){\n    paramSummary[2] = 3; \n}\n// else if(currentPh > 8.5){\n//     paramSummary[2] = 3; \n// }\n ///////   Electrical Conductivity    ////////////\nif(currentEc >= 0 && currentEc < 750){\n    paramSummary[3] = 1;\n}\n\nelse if(currentEc >= 750 && currentEc < 3000){\n    paramSummary[3] = 2;\n}\nelse if(currentEc >= 3000){\n    paramSummary[3] = 3; \n}\n\ncountY = 0;\nRflag =0;\n\nfor(i = 0; i<4; i++){\n    if(paramSummary[i] == 2){\n        countY++;\n    }\n}\nif(countY == 0 || countY == 1){\n    Summary = 3;\n}\nelse if(countY == 2){\n    Summary = 2;\n}\nelse if(countY == 3){\n    Summary = 1;\n}\nfor(i = 0; i<4; i++){\n    if(paramSummary[i] == 3){\n        Summary = 0;\n        break;\n    }\n}\nmsg.payload = {\n    timestamp: new Date().getTime(),\n    date: new Date().toLocaleDateString(),\n    time: new Date().toLocaleTimeString(),\n    tds: currentTds,\n    turbidity: currentTurbidity,\n    ph: currentPh,\n    ec: currentEc,\n    temperature: currentTemperature,\n    summary: Summary\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3e0a0af8.33a506",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "inFilter-classifier-Hardware",
+        "func": "currentTds = msg.payload.d.tds;\ncurrentTurbidity = msg.payload.d.turb;\ncurrentPh = msg.payload.d.ph;\ncurrentEc = msg.payload.d.ec;\ncurrentTemperature = msg.payload.d.temp;\n\nSummary = -1;\nparamSummary = [-1,-1,-1,-1];\n\n ///////   TDS    ////////////\nif(currentTds >= 0 && currentTds < 250){\n    paramSummary[0] = 1;\n}\n\nelse if(currentTds >= 250 && currentTds < 950){\n    paramSummary[0] = 2;\n}\nelse if(currentTds >= 950){\n    paramSummary[0] = 3; \n}\n\n ///////   Turbidity    ////////////\nif(currentTurbidity >= 0 && currentTurbidity <= 2){\n    paramSummary[1] = 1;\n}\n\nelse if(currentTurbidity > 2 && currentTurbidity <= 5){\n    paramSummary[1] = 2;\n}\nelse if(currentTurbidity > 5){\n    paramSummary[1] = 3; \n}\n\n ///////   pH    ////////////\nif(currentPh >= 6.5 && currentPh <= 8.5){\n    paramSummary[2] = 1;\n}\nelse if(currentPh < 6.5 && currentPh > 8.5){\n    paramSummary[2] = 3; \n}\n\n ///////   Electrical Conductivity    ////////////\nif(currentEc >= 0 && currentEc < 750){\n    paramSummary[3] = 1;\n}\n\nelse if(currentEc >= 750 && currentEc < 3000){\n    paramSummary[3] = 2;\n}\nelse if(currentEc >= 3000){\n    paramSummary[3] = 3; \n}\n\ncountY = 0;\nRflag =0;\n\nfor(i = 0; i<4; i++){\n    if(paramSummary[i] == 3){\n        Summary = 0;\n        break;\n    }\n    if(paramSummary[i] == 2){\n        countY++;\n    }\n}\nif(countY == 0 || countY == 1){\n    Summary = 3;\n}\nelse if(countY == 2){\n    Summary = 2;\n}\nelse if(countY == 3){\n    Summary = 1;\n}\n\nmsg.payload = {\n    date: new Date().toLocaleDateString(),\n    time: new Date().toLocaleTimeString(),\n    tds: currentTds,\n    turbidity: currentTurbidity,\n    ph: currentPh,\n    ec: currentEc,\n    temperature: currentTemperature,\n    summary: Summary\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "ff389999.b0c138",
+                "72db8b85.ea2224",
+                "571ba49a.6fda7c"
+            ]
+        ]
+    },
+    {
+        "id": "7382d87a.1e3e78",
+        "type": "websocket in",
+        "z": "d8d99b35.bf2c68",
+        "name": "request History Max",
+        "server": "89f56fbf.18695",
+        "client": "",
+        "x": 190,
+        "y": 800,
+        "wires": [
+            [
+                "a88f46ae.d59438"
+            ]
+        ]
+    },
+    {
+        "id": "eeb69508.70e9a8",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "outFilter[ max]",
+        "func": "// cloudant.rows[41].doc.temperature\ntotal = (msg.cloudant.rows.length)-1;\nhistMax = [];\nfor(i = total; i >=0; i-- ){\n    histMax.push({timestamp: msg.cloudant.rows[i].doc.timestamp,\n        date: msg.cloudant.rows[i].doc.date,\n        time: msg.cloudant.rows[i].doc.time,\n        tds: msg.cloudant.rows[i].doc.tds,\n        turbidity: msg.cloudant.rows[i].doc.turbidity,\n        ph: msg.cloudant.rows[i].doc.ph,\n        ec: msg.cloudant.rows[i].doc.ec,\n        temperature: msg.cloudant.rows[i].doc.temperature,\n        summary: msg.cloudant.rows[i].doc.summary\n        \n    });\n}\nmsg.payload = {\n    histMax\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 760,
+        "wires": [
+            [
+                "6aa343e0.40c47c"
+            ]
+        ]
+    },
+    {
+        "id": "6cb115e3.9d7b4c",
+        "type": "inject",
+        "z": "d8d99b35.bf2c68",
+        "d": true,
+        "name": "autoSend",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 740,
+        "wires": [
+            [
+                "a88f46ae.d59438"
+            ]
+        ]
+    },
+    {
+        "id": "5ee399ba.69ccf8",
+        "type": "debug",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "a153b126.60f4d",
+        "type": "websocket out",
+        "z": "d8d99b35.bf2c68",
+        "name": "/ws/publishMessage/historyMax",
+        "server": "89f56fbf.18695",
+        "client": "",
+        "x": 1090,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "a88f46ae.d59438",
+        "type": "cloudant in",
+        "z": "d8d99b35.bf2c68",
+        "name": "Database",
+        "cloudant": "4e09106f.2e2d9",
+        "database": "pdata",
+        "service": "Enter your Cloudant DB details",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 380,
+        "y": 760,
+        "wires": [
+            [
+                "eeb69508.70e9a8"
+            ]
+        ]
+    },
+    {
+        "id": "8b7fcfcb.d3752",
+        "type": "sort",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "order": "ascending",
+        "as_num": false,
+        "target": "payload.histMax",
+        "targetType": "msg",
+        "msgKey": "timestamp",
+        "msgKeyType": "jsonata",
+        "seqKey": "payload",
+        "seqKeyType": "msg",
+        "x": 750,
+        "y": 560,
+        "wires": [
+            [
+                "371fa248.a4932e"
+            ]
+        ]
+    },
+    {
+        "id": "6aa343e0.40c47c",
+        "type": "sort",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "order": "descending",
+        "as_num": false,
+        "target": "payload.histMax",
+        "targetType": "msg",
+        "msgKey": "timestamp",
+        "msgKeyType": "jsonata",
+        "seqKey": "payload",
+        "seqKeyType": "msg",
+        "x": 770,
+        "y": 760,
+        "wires": [
+            [
+                "a153b126.60f4d",
+                "5ee399ba.69ccf8"
+            ]
+        ]
+    },
+    {
+        "id": "389ff846.6b7dc8",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "outFilter[ max]",
+        "func": "// cloudant.rows[41].doc.temperature\ntotal = (msg.cloudant.rows.length)-1;\nhistMax = [];\nfor(i = total; i >=0; i-- ){\n    histMax.push({timestamp: msg.cloudant.rows[i].doc.timestamp,\n        date: msg.cloudant.rows[i].doc.date,\n        time: msg.cloudant.rows[i].doc.time,\n        tds: msg.cloudant.rows[i].doc.tds,\n        turbidity: msg.cloudant.rows[i].doc.turbidity,\n        ph: msg.cloudant.rows[i].doc.ph,\n        ec: msg.cloudant.rows[i].doc.ec,\n        temperature: msg.cloudant.rows[i].doc.temperature,\n        summary: msg.cloudant.rows[i].doc.summary\n        \n    });\n}\nmsg.payload = {\n    histMax\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "f3bdcc8.8d1e73"
+            ]
+        ]
+    },
+    {
+        "id": "f3bdcc8.8d1e73",
+        "type": "sort",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "order": "descending",
+        "as_num": false,
+        "target": "payload.histMax",
+        "targetType": "msg",
+        "msgKey": "timestamp",
+        "msgKeyType": "jsonata",
+        "seqKey": "payload",
+        "seqKeyType": "msg",
+        "x": 770,
+        "y": 420,
+        "wires": [
+            [
+                "9b216701.3ce828"
+            ]
+        ]
+    },
+    {
+        "id": "ff389999.b0c138",
+        "type": "ibmiot out",
+        "z": "d8d99b35.bf2c68",
+        "authentication": "boundService",
+        "apiKey": "",
+        "outputType": "cmd",
+        "deviceId": "Enter your Device ID",
+        "deviceType": "Enter your Device Type",
+        "eventCommandType": "wqs",
+        "format": "json",
+        "data": "payload.summary",
+        "qos": 0,
+        "name": "pumpNode-Indicator",
+        "service": "registered",
+        "x": 740,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d9b24ea7.62038",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "outFilter[ max]",
+        "func": "// cloudant.rows[41].doc.temperature\ntotal = (msg.cloudant.rows.length)-1;\nhistMax = [];\nfor(i = total; i >=0; i-- ){\n    histMax.push({timestamp: msg.cloudant.rows[i].doc.timestamp,\n        date: msg.cloudant.rows[i].doc.date,\n        time: msg.cloudant.rows[i].doc.time,\n        tds: msg.cloudant.rows[i].doc.tds,\n        turbidity: msg.cloudant.rows[i].doc.turbidity,\n        ph: msg.cloudant.rows[i].doc.ph,\n        ec: msg.cloudant.rows[i].doc.ec,\n        temperature: msg.cloudant.rows[i].doc.temperature,\n        summary: msg.cloudant.rows[i].doc.summary\n        \n    });\n}\nmsg.payload = {\n    \"total\" : msg.cloudant.rows.length,\n    histMax\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "8b7fcfcb.d3752"
+            ]
+        ]
+    },
+    {
+        "id": "2161d878.8a47d8",
+        "type": "switch",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "property": "payload.summary",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "6874e230.46919c"
+            ],
+            [
+                "ac1c2a2c.1c7a38"
+            ]
+        ]
+    },
+    {
+        "id": "571ba49a.6fda7c",
+        "type": "rbe",
+        "z": "d8d99b35.bf2c68",
+        "name": "execute once",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload.summary",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "2161d878.8a47d8"
+            ]
+        ]
+    },
+    {
+        "id": "6874e230.46919c",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "func": "msg = {\n    payload: \"Alert !!! Water Quality Summary: BAD; RO filteration and good boiling / UV filteration required before cosumption \"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 300,
+        "wires": [
+            [
+                "eb649c89.a8f97"
+            ]
+        ]
+    },
+    {
+        "id": "eb649c89.a8f97",
+        "type": "twilio out",
+        "z": "d8d99b35.bf2c68",
+        "twilio": "8e0ba67f.c37ba8",
+        "twilioType": "sms",
+        "url": "",
+        "number": "Enter your verified Contact No. (if on free plan)",
+        "name": "SMS Alert",
+        "x": 860,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ac1c2a2c.1c7a38",
+        "type": "function",
+        "z": "d8d99b35.bf2c68",
+        "name": "",
+        "func": "msg = {\n    payload: \"Alert !!! Water Quality Summary: WORSE; Unfit for cosumption \"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 360,
+        "wires": [
+            [
+                "e5b5c236.84b65"
+            ]
+        ]
+    },
+    {
+        "id": "e5b5c236.84b65",
+        "type": "twilio out",
+        "z": "d8d99b35.bf2c68",
+        "twilio": "8e0ba67f.c37ba8",
+        "twilioType": "sms",
+        "url": "",
+        "number": "Enter your verified Contact No. (if on free plan)",
+        "name": "SMS Alert",
+        "x": 860,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4e09106f.2e2d9",
+        "type": "cloudant",
+        "host": "Enter your Cloudant DB details",
+        "name": "cloudant-xh"
+    },
+    {
+        "id": "a37a35a9.6aa598",
+        "type": "websocket-listener",
+        "path": "/ws/ID20210716",
+        "wholemsg": "false"
+    },
+    {
+        "id": "f50a57d2.6fe718",
+        "type": "websocket-listener",
+        "path": "/ws/ID20210716/history",
+        "wholemsg": "false"
+    },
+    {
+        "id": "89f56fbf.18695",
+        "type": "websocket-listener",
+        "path": "/ws/ID20210716/historyMax",
+        "wholemsg": "false"
+    },
+    {
+        "id": "8e0ba67f.c37ba8",
+        "type": "twilio-api",
+        "name": "",
+        "sid": "enter yours",
+        "from": "Enter sender no."
+    }
+]
