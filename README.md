@@ -1,6 +1,6 @@
 # Saaf water 
 
-[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://developer.ibm.com/callforcode/get-started/) [![Website](https://img.shields.io/badge/View-Website-blue)](https://sample-project.s3-web.us-east.cloud-object-storage.appdomain.cloud/)
+[![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://discord.gg/9VVKhs6fSu) [![Website](https://img.shields.io/badge/View-Website-blue)](https://saaf-water.eu-gb.mybluemix.net/)
 
 ## Contents
 
@@ -37,7 +37,7 @@ With IoT devices, frequent water quality monitoring becomes automated and thanks
 
 ### The idea
 
-<b><font style="color:#4F46E5" type="Roboto"> Saaf</font></b> <font type="Roboto"> water </font> is an end to end Open-source platform which when installed will:
+Saaf water is an end to end Open-source platform which when installed will:
 1. Timely monitors groundwater and informs authorities as well as the community about water quality along with purification methods for consumption.
 2. Predict when the water quality will go bad.
 3. Reduce dependency on manual test kits or lab tests for approximate assessment.
@@ -93,18 +93,18 @@ In this section you add the instructions to run your project on your local machi
 
 ## Live demo
 
-You can find a running system to test at [callforcode.mybluemix.net](https://saaf-water.eu-gb.mybluemix.net/)
+You can find a running system to test at [saaf-water.eu-gb.mybluemix.net](https://saaf-water.eu-gb.mybluemix.net/)
 
 ![Dashboard](./images/Dashboard.png)
 
 ## Built with
 
 - [IBM Node Red](https://nodered.org/docs/getting-started/ibmcloud#deploy-to-ibm-cloud) - Backend for saaf-Water
-- [IBM Watson IOT Platform](https://www.ibm.com/cloud/watson-iot-platform) - The service which we use to manage hardware connections to IBM Cloud.
-- [IBM Cloudant](https://www.ibm.com/cloud/cloudant) - The NoSQL database used
-- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) - The service which we used to deploy [Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
-- [Esri Arcgis Map](https://www.esri.com/en-us/arcgis/about-arcgis/overview) - Map we're using in [Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
-- [ReactJs](https://reactjs.org/) - The web framework used
+- [IBM Watson IoT Platform](https://www.ibm.com/cloud/watson-iot-platform) - IoT Gateway on IBM Cloud
+- [IBM Cloudant](https://www.ibm.com/cloud/cloudant) - NoSQL database for historical data
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) - To deploy [Saaf water Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
+- [Esri Arcgis Map](https://www.esri.com/en-us/arcgis/about-arcgis/overview) - For maps in [Saaf water Dashboard](https://saaf-water.eu-gb.mybluemix.net/)
+- [ReactJs](https://reactjs.org/) - Front-End framework
 
 ## Contributing
 
@@ -126,4 +126,5 @@ This project is licensed under the Apache 2 License - see the [LICENSE](LICENSE)
 
 ## Acknowledgments
 
+- We acknowledge the support and guidance of Mr. Chintamani Shirodkar.
 - Based on [Billie Thompson's README template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).

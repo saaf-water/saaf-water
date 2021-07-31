@@ -5,13 +5,13 @@
 Thank you for your interest in contributing to saaf-water! Before you begin writing code, it is important that you share your intention to contribute with the team, based on the type of contribution:
 
 1.  You want to propose a new feature and implement it.
-    -   Post about your intended feature in an [issue](https://github.com/saaf-water/Dashboard/issues), and we shall discuss the design and implementation. Once we agree that the plan looks good, go ahead and implement it.
+    -   Post about your intended feature in an [issue](https://github.com/saaf-water/saaf-water/issues), and we shall discuss the design and implementation. Once we agree that the plan looks good, go ahead and implement it.
 2.  You want to implement a feature or bug-fix for an outstanding issue.
-    -   Search for your issue in the [saaf-water Dashboard issue list](https://github.com/saaf-water/Dashboard/issues).
+    -   Search for your issue in the [saaf-water issue list](https://github.com/saaf-water/saaf-water/issues).
     -   Pick an issue and comment that you'd like to work on the feature or bug-fix.
     -   If you need more context on a particular issue, please ask and we shall provide.
 
-Once you implement and test your feature or bug-fix, please submit a Pull Request to [https://github.com/saaf-water/Dashboard](https://github.com/saaf-water/Dashboard).
+Once you implement and test your feature or bug-fix, please submit a Pull Request to [https://github.com/saaf-water/saaf-water](https://github.com/saaf-water/saaf-water).
 
 
 ## Code of Conduct
@@ -68,7 +68,7 @@ further defined and clarified by project maintainers.
 ### Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team on [Slack in the #code-of-conduct channel](https://callforcode.org/slack). 
+reported by contacting the project team on [Saaf water Discord server #code-of-conduct](https://discord.gg/9VVKhs6fSu). 
 
 All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
