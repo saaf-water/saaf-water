@@ -1,4 +1,4 @@
-# <font style="color:#4F46E5" > Saaf</font> water 
+# Saaf water 
 
 [![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://developer.ibm.com/callforcode/get-started/) [![Website](https://img.shields.io/badge/View-Website-blue)](https://sample-project.s3-web.us-east.cloud-object-storage.appdomain.cloud/)
 
@@ -44,16 +44,19 @@ With IoT devices, frequent water quality monitoring becomes automated and thanks
 
 ## Demo video
 
-[![Watch the video](./images/saaf-youtube.png)](https://youtu.be/_taOL857nPA)
+[![Watch the video](/images/saaf-yotube.png)](https://youtu.be/_taOL857nPA)
 
 ## The architecture
 
 ![Saaf water Dashboard](./images/architecture.png)
 
-1. The Saaf water hardware consists of a low power, cellular enabled setup that monitors water parameters like TDS, Turbidity, pH and more and sends it to IBM watson IoT platform.
-2. The water parameter data is then collected by the NodeRed backed from the IBM Watson IoT platform and then stored in NoSQL database.
-3. The Backend then sends the data via websocket to the Saaf water dashboard deployed on IBM Cloud Foundry.
-4. Or users can get the groundwater quality information and purification methods via SMS too.
+1. The Saaf water hardware consists of a low power, cellular enabled setup that monitors water parameters and sends it to IBM watson IoT platform via MQTT.
+2. The Node-RED backend IBM Cloud collects these parameters via MQTT for water quality estimation.
+3. Once estimation is done it stores the complete data instance on Cloudant NoSQL database and also sends the water quality information to the hardware via MQTT for visual indication.
+4. In case the water quality is Bad or Worse the Node-RED backend sends a text message to the subscribed users via Twilio (Since we are on free plan, subscription is limited to manual contact entry).
+5. The Node-RED backend sets up a WebSocket service for the data transmission to the Saaf water Dashboard.
+6. The Saaf water Dashboard then displays the data in number, chart, table, calendar heatmap, map and summary for water quality estimation, purification methods and usage info.
+7. In case the hardware disconnects from the internet it is capable to approximately assess the water quality and display through the visual indicators (LED Ring).
 
 ## Long description
 
@@ -61,16 +64,24 @@ With IoT devices, frequent water quality monitoring becomes automated and thanks
 
 ## Project roadmap
 
+Note - Some things may take longer time because of COVID-19 restrictions in India.
+
 The Saaf water currently does the following things.
 
-- Monitors various groundwater parameters like TDS, pH, Turbidity, Electrical Conductivity. 
-- Groundwater Quality Prediction.
-- Informs authorities as well as community about water quality with purification methods.
+- Monitors various groundwater parameters.
+- Estimates groundwater quality and purification methods.
+- Informs all the subscribed users via SMS, Onsite visual indicators and Saaf water Dashboard.
 
+Features Pending - 
+
+- Switching over to ML predictions for Water quality and purification methods once data collection is complete.
+- Translation of the entire Saaf water platform from SMS to Saaf water Dashboard.
+- Rapid visual biological tests.
+- Seasonal Groundwater quality predictions.
+
+ 
 ![Roadmap](./images/tech_roadmap.png)
 ![Roadmap](./images/product_roadmap.png)
-
-Note - Some things may take longer time because of COVID-19 restrictions in India.
 
 ## Getting started
 
@@ -82,7 +93,9 @@ In this section you add the instructions to run your project on your local machi
 
 ## Live demo
 
-You can find a running system to test at [callforcode.mybluemix.net](https://saaf-water.eu-gb.mybluemix.net/).
+You can find a running system to test at [callforcode.mybluemix.net](https://saaf-water.eu-gb.mybluemix.net/)
+
+![Dashboard](./images/Dashboard.png)
 
 ## Built with
 
