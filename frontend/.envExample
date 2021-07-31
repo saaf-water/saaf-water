@@ -1,0 +1,5 @@
+React_App_PUMP_WEBSOCKET="Your Pump Websocket Url (For Summary & Live readings in Graphs)"
+React_App_HISTORY_WEBSOCKET="Your History Websocket Url (For Graphs)"
+React_App_HISTORYMAX_WEBSOCKET="Your HistoryMax Websocket Url (For Table & Calendar Heatmap"
+
+//Rename this file to .env and delete this line (.env file should be present in the root '/' Directory)

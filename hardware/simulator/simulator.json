@@ -1,0 +1,28 @@
+{
+  "deviceTypes": [
+    {
+      "id": "XXXXXXXXXXXXX",
+      "running": false,
+      "events": [
+        {
+          "id": "status",
+          "frequency": {
+            "repeat": "120",
+            "every": "minute"
+          },
+          "json": "{\n  \"tds\": random(0,1500),\n  \"turb\" : random(0.0,10.0),\n  \"ph\" : random(1.0,14.0),\n  \"ec\" : random(300,4000),\n  \"temp\" : random(25,30)\n}\n"
+        }
+      ],
+      "devices": [
+        {
+          "id": "XXXXXX", 
+          "generated": false
+        }
+      ],
+      "managed": {
+        "enabled": false
+      }
+    }
+  ],
+  "APIKey": "XXXXXXXXXXXX"
+}

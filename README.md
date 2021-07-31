@@ -64,7 +64,7 @@ Saaf water is an end to end Open-source platform which when installed will:
 
 ## Project roadmap
 
-Note - Some things may take longer time because of COVID-19 restrictions in India.
+> **Note: Some things may take longer time because of COVID-19 restrictions in India.**
 
 The Saaf water currently does the following things.
 
@@ -85,11 +85,15 @@ Features Pending -
 
 ## Getting started
 
-In this section you add the instructions to run your project on your local machine for development and testing purposes. You can also add instructions on how to deploy the project in production.
+To get started with Saaf water platform - visit respective section below:
 
-- [sample-react-app](./sample-react-app/)
-- [sample-angular-app](./sample-angular-app/)
-- [Explore other projects](https://github.com/upkarlidder/ibmhacks)
+- [Saaf water Hardware](./hardware/)
+- [Saaf water Backend](./backend/)
+- [Saaf water Dashboard](./frontend/)
+ 
+*OR*
+ 
+To contribute do consider individual repositories in [Saaf water](https://github.com/saaf-water) organization.
 
 ## Live demo
 
@@ -116,7 +120,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 - [Hrishikesh Bhandari](https://github.com/Hrishikesh24)
 - [Jay Aherkar](https://github.com/jehhhh)
 - [Satyam Prakash](https://github.com/satyamprakash-iot)
-- [Manikanta Chavvakula](https://github.comManikantaChavvakula7)
+- [Manikanta Chavvakula](https://github.com/ManikantaChavvakula7)
 - [Sanket Marathe](https://github.com/msanket9)
 
 

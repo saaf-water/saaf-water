@@ -1,0 +1,7 @@
+applications:
+  - name: saaf-water
+memory: 256M
+path: build/
+buildpack: staticfile_buildpack 
+routes:
+  - route: <Input your ROUTE>

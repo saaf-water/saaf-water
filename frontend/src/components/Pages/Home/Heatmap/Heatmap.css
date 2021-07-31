@@ -1,0 +1,68 @@
+.react-calendar-heatmap text {
+  font-size: 10px;
+  fill: #aaa;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 2px;
+}
+
+.color-beammp-0 {
+  fill: #c91717;
+}
+
+.color-beammp-1 {
+  fill: #f3870b;
+}
+
+.color-beammp-2 {
+  fill: #ebe708;
+}
+
+.color-beammp-3 {
+  fill: #09f109;
+}
+
+.color-beammp-4 {
+  fill: #8fe96c;
+}
+
+.color-empty {
+  fill: #848882;
+}
+@media only screen and (min-width: 1278px) {
+  svg.react-calendar-heatmap {
+    min-height: 150px;
+    min-width: 250px;
+    max-width: 280px;
+  }
+}
+
+@media only screen and (max-width: 1278px) {
+  svg.react-calendar-heatmap {
+    min-height: 150px;
+    min-width: 500px;
+    max-width: 700px;
+  }
+}
+
+@media only screen and (max-width: 807px) {
+  svg.react-calendar-heatmap {
+    min-height: 150px;
+    min-width: 330px;
+    max-width: 280px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  svg.react-calendar-heatmap {
+    min-height: 150px;
+    min-width: 220px;
+    max-width: 250px;
+  }
+}
