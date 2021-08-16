@@ -6,7 +6,8 @@
  
 We have designed a solution that addresses the need of making water quality information accessible. We believe that this platform once installed will frequently monitor the groundwater and communicate purification methods along with the current water quality summary which will help people consume the groundwater safely. 
 
-We call it Saaf water
+We call it Saaf water.
+
 Saaf water is an open-source AI - IoT platform built over IBM Cloud and Watson services, that makes groundwater information Easy and Accessible to everyone
 
 [Project website](https://saaf-water.eu-gb.mybluemix.net/)
