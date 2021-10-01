@@ -1,0 +1,17 @@
+{
+  "name": "DFRobot_ESP_EC_BY_GREENPONIK",
+  "description": "Read EC with ESP32 and DFrobot DFR0300 EC sensor kit",
+  "keywords": "EC,reader,ESP32",
+  "authors": {
+    "name": "Mickael Lehoux",
+    "maintainer": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GreenPonik/DFRobot_ESP_EC_BY_GREENPONIK.git"
+  },
+  "version": "1.1.4",
+  "license": "LGPL-2.1",
+  "frameworks": "arduino",
+  "platforms": "espressif32"
+}

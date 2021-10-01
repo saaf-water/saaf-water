@@ -1,0 +1,15 @@
+#######################################
+# Syntax Coloring DFRobot_ESP_PH_WITH_ADC
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_ESP_PH_WITH_ADC	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+readPH	KEYWORD2
+calibration	KEYWORD2

@@ -10,8 +10,8 @@ To do so it comprises of 5 units namely:
     - 1000 mAh LiPo Battery
     - 5V 1A DC Power Adapter or equivalent Solar Panel
 - Microcontroller Unit (MCU) 
-    - [TTGO T-Call ESP32 Dev Board](http://www.lilygo.cn/prod_view.aspx?TypeId=50033&Id=1127&FId=t3:50033:3)
-    - OR [ESP32 Dev Module](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf)
+    - [ESP32 Dev Module](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf)
+    - [ADS1115 External ADC](https://www.adafruit.com/product/1085)
 - Sensing Unit
     - [TDS Senor](https://wiki.seeedstudio.com/Grove-TDS-Sensor/)
     - [Turbidity Sensor](https://wiki.dfrobot.com/Turbidity_sensor_SKU__SEN0189)
@@ -21,7 +21,7 @@ To do so it comprises of 5 units namely:
 - Visual Indicator
     - [Adafruit Neopixel 16 LED Ring](https://www.adafruit.com/product/1463)
 - Telemetry
-    - 2G Cellular if TTGO T-Call ESP32 Dev Board 
+    - [SIM800l Module](https://www.electronicscomp.com/sim800l-v2-5v-wireless-gsm-gprs-module-quad-band-with-antenna?gclid=CjwKCAjw49qKBhAoEiwAHQVTo3qxCmt1eXAbXXuzhqiG9XrTKoJOElVG9cEji4vwE9N98dFYuux88hoCngkQAvD_BwE)
     - OR WiFi 2.4 GHz if ESP32 Dev Board
 
 ![Hardware Structure](./images/struct.png)

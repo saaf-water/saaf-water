@@ -1,0 +1,17 @@
+{
+  "name": "DFRobot_ESP_PH_WITH_ADC_BY_GREENPONIK",
+  "description": "Read PH with ESP32, ADC Adafruit ADS1115 and DFrobot SEN0161-V2 PH sensor kit",
+  "keywords": "PH,reader,ESP32",
+  "authors": {
+    "name": "GreenPonik (Mickael Lehoux)",
+    "maintainer": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GreenPonik/DFRobot_ESP_PH_WITH_ADC_BY_GREENPONIK.git"
+  },
+  "version": "1.2.3",
+  "license": "LGPL-2.1",
+  "frameworks": "arduino",
+  "platforms": "espressif32"
+}
