@@ -1,4 +1,5 @@
 # Saaf water 
+### Note - The project is under development, therefore we are not accepting any contribution at the moment.  
 
 [![License](https://img.shields.io/badge/License-Apache2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Community](https://img.shields.io/badge/Join-Community-blue)](https://discord.gg/9VVKhs6fSu) [![Website](https://img.shields.io/badge/View-Website-blue)](https://saaf-water.eu-gb.mybluemix.net/)
 
