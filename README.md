@@ -49,6 +49,8 @@ Saaf water is an end to end Open-source platform which when installed will:
 
 ## The architecture
 
+> Note: ⚠️ The following is an initial architecture and is subjected to changes. 
+
 ![Saaf water Dashboard](./images/architecture.png)
 
 1. The Saaf water hardware consists of a low power, cellular enabled setup that monitors water parameters and sends it to IBM watson IoT platform via MQTT.
@@ -66,35 +68,10 @@ Saaf water is an end to end Open-source platform which when installed will:
 ## Project roadmap
 
 > **Note: Some things may take longer time because of COVID-19 restrictions in India.**
-
-The Saaf water currently does the following things.
-
-- Monitors various groundwater parameters.
-- Estimates groundwater quality and purification methods.
-- Informs all the subscribed users via SMS, Onsite visual indicators and Saaf water Dashboard.
-
-Features Pending - 
-
-- Switching over to ML predictions for Water quality and purification methods once data collection is complete.
-- Translation of the entire Saaf water platform from SMS to Saaf water Dashboard.
-- Rapid visual biological tests.
-- Seasonal Groundwater quality predictions.
-
- 
-![Roadmap](./images/tech_roadmap.png)
-![Roadmap](./images/product_roadmap.png)
+#### We are undergoing significant changes, project roadmap will be updated soon...
 
 ## Getting started
-
-To get started with Saaf water platform - visit respective section below:
-
-- [Saaf water Hardware](./hardware/)
-- [Saaf water Backend](./backend/)
-- [Saaf water Dashboard](./frontend/)
- 
-*OR*
- 
-To contribute do consider individual repositories in [Saaf water](https://github.com/saaf-water) organization.
+#### We are undergoing significant changes, project guide will be updated soon...
 
 ## Live demo
 
